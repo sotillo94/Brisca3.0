@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Brisca3.0</string>
+
+    <string name="titulo">Brisca3.0</string>
+    <string name="boton1">New game</string>
+    <string name="boton2">Join game</string>
+    <string name="boton3">Statistics</string>
+    <string name="boton4">Instructions</string>
+    <string name="boton5">Rules</string>
+    <string name="action_settings">Settings</string>
+</resources>
