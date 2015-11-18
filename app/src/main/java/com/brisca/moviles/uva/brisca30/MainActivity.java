@@ -12,6 +12,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button botonReglas;
     Button botonInstrucciones;
+    Button botonCrearPartida;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         botonInstrucciones=(Button) findViewById(R.id.buttonInstrucciones);
         botonInstrucciones.setOnClickListener(this);
+
+        botonCrearPartida=(Button) findViewById(R.id.buttonCrearPartida);
+        botonCrearPartida.setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonInstrucciones:
                 Intent intentInstrucciones = new Intent(MainActivity.this,InstruccionesBrisca.class);
                 startActivity(intentInstrucciones);
+                break;
+            case R.id.buttonCrearPartida:
+                Intent intentCrearPartida = new Intent(MainActivity.this,CrearNuevaPartida.class);
+                startActivity(intentCrearPartida);
                 break;
             default:
                 break;

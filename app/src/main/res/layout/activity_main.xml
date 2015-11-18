@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/boton1"
-        android:id="@+id/button"
+        android:id="@+id/buttonCrearPartida"
         android:layout_marginBottom="5sp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/redondo"
