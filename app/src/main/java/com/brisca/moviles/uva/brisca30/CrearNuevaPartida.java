@@ -1,7 +1,9 @@
 package com.brisca.moviles.uva.brisca30;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,7 +28,13 @@ public class CrearNuevaPartida extends AppCompatActivity implements View.OnClick
             case R.id.buttonNombrePartida:
                 textNuevaPartida=(TextView) findViewById(R.id.mens_nombre_partida);
                 titulo=(TextView) findViewById(R.id.titulo);
-                titulo.setText((CharSequence) textNuevaPartida.getText());
+                String nombre=  textNuevaPartida.getText().toString();
+
+                Intent intentCrearPartida = new Intent(CrearNuevaPartida.this,Conexion.class);
+                Bundle datos=new Bundle();
+                datos.putString("nombrePartida",nombre);
+                intentCrearPartida.putExtras(datos);
+                startActivity(intentCrearPartida);
                 break;
             default:
                 break;
