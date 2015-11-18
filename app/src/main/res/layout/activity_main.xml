@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/boton2"
-        android:id="@+id/button2"
+        android:id="@+id/buttonUnirPartida"
         android:layout_marginBottom="5sp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/redondo"

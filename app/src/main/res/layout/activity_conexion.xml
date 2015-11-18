@@ -18,41 +18,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/advertise_btn"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
-            android:onClick="clickAdvertise"
-            android:text="Crear" />
-
-        <Button
-            android:id="@+id/discover_btn"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
-            android:onClick="clickDiscover"
-            android:text="Descubr" />
-
-        <Button
-            android:id="@+id/connect_btn"
-            android:layout_width="96dp"
-            android:layout_height="64dp"
-            android:onClick="clickConnect"
-            android:text="Conectar" />
-    </LinearLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/NombrePartida" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/NombrePartida" />
 
 
     <TextView

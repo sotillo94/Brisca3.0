@@ -30,9 +30,13 @@ public class CrearNuevaPartida extends AppCompatActivity implements View.OnClick
                 titulo=(TextView) findViewById(R.id.titulo);
                 String nombre=  textNuevaPartida.getText().toString();
 
+                Bundle datos= getIntent().getExtras();
+                Boolean crear= datos.getBoolean("crear");
+
                 Intent intentCrearPartida = new Intent(CrearNuevaPartida.this,Conexion.class);
-                Bundle datos=new Bundle();
+                datos=new Bundle();
                 datos.putString("nombrePartida",nombre);
+                datos.putBoolean("crear",crear);
                 intentCrearPartida.putExtras(datos);
                 startActivity(intentCrearPartida);
                 break;

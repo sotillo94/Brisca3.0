@@ -26,6 +26,8 @@ import android.widget.TextView;
 import com.brisca.moviles.uva.brisca30.Conect.ChatConnection;
 import com.brisca.moviles.uva.brisca30.Conect.NsdHelper;
 
+import static android.os.SystemClock.sleep;
+
 public class Conexion extends AppCompatActivity implements View.OnClickListener {
     TextView NombrePartida;
     NsdHelper mNsdHelper;
@@ -51,15 +53,19 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         Bundle datos= getIntent().getExtras();
         NombrePartida.setText(datos.getString("nombrePartida"));
         NsdHelper.mServiceName=NsdHelper.mServiceName+datos.getString("nombrePartida");
+        boolean crear=datos.getBoolean("crear");
 
+        /*
         botonCrear=(Button) findViewById(R.id.advertise_btn);
         botonCrear.setOnClickListener(this);
         botonDescubrir=(Button) findViewById(R.id.discover_btn);
         botonDescubrir.setOnClickListener(this);
         botonConectar=(Button) findViewById(R.id.connect_btn);
         botonConectar.setOnClickListener(this);
+        */
         botonEnviar=(Button) findViewById(R.id.send_btn);
         botonEnviar.setOnClickListener(this);
+
 
         mUpdateHandler = new Handler() {
             @Override
@@ -75,9 +81,27 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         mNsdHelper.initializeNsd();
 
 
+        if(crear){
+
+            crear();
+
+            NombrePartida.setText("Creado");
+        }
+        else {
+
+            descubrir();
+
+            sleep(1000);
+
+            conectar();
+
+            NombrePartida.setText("Conectado");
 
 
-        //crearServidor();
+
+        }
+
+
     }
 
     public void crear() {
@@ -152,6 +176,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
 
 
         switch (v.getId()){
+            /*
             case R.id.advertise_btn:
                 crear();
                 break;
@@ -161,11 +186,13 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             case R.id.connect_btn:
                 conectar();
                 break;
+                */
             case R.id.send_btn:
                 enviar();
                 break;
             default:
                 break;
         }
+
     }
 }
