@@ -33,7 +33,7 @@ public class NsdHelper {
     public static final String SERVICE_TYPE = "_http._tcp.";
 
     public static final String TAG = "NsdHelper";
-    public String mServiceName = "NsdChat";
+    public static String mServiceName = "Brisca";
 
     NsdServiceInfo mService;
 
@@ -66,6 +66,7 @@ public class NsdHelper {
                     Log.d(TAG, "Unknown Service Type: " + service.getServiceType());
                 } else if (service.getServiceName().equals(mServiceName)) {
                     Log.d(TAG, "Same machine: " + mServiceName);
+                    mNsdManager.resolveService(service, mResolveListener);
                 } else if (service.getServiceName().contains(mServiceName)){
                     mNsdManager.resolveService(service, mResolveListener);
                 }
@@ -112,6 +113,7 @@ public class NsdHelper {
 
                 if (serviceInfo.getServiceName().equals(mServiceName)) {
                     Log.d(TAG, "Same IP.");
+                    mService = serviceInfo;
                     return;
                 }
                 mService = serviceInfo;
