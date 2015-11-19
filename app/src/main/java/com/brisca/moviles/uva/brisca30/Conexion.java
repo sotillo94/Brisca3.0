@@ -89,7 +89,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         else {
 
             descubrir();
-            sleep(10000);
+            sleep(1000);
             conectar();
             NombrePartida.setText("Conectado");
 
