@@ -1,4 +1,4 @@
-package com.brisca.moviles.uva.brisca30.Baraja;
+package com.brisca.moviles.uva.brisca30.Juego;
 
 /* Implementa una carta de la baraja */
 public class Carta {

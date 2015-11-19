@@ -1,4 +1,4 @@
-package com.brisca.moviles.uva.brisca30.Baraja;
+package com.brisca.moviles.uva.brisca30.Juego;
 
 import java.util.ArrayList;
 

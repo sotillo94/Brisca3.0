@@ -1,4 +1,4 @@
-package com.brisca.moviles.uva.brisca30.Baraja;
+package com.brisca.moviles.uva.brisca30.Juego;
 
 /* Implementa un jugador de la partida */
 public class Jugador {

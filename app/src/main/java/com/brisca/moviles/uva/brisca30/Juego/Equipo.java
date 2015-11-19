@@ -1,4 +1,4 @@
-package com.brisca.moviles.uva.brisca30.Baraja;
+package com.brisca.moviles.uva.brisca30.Juego;
 
 /* Implementa un equipo de la partida que puede ser de uno, dos o tres jugadores */
 public class Equipo {
