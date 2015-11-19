@@ -2,6 +2,8 @@ package com.brisca.moviles.uva.brisca30;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 
 /**
  * Created by argv0 on 19/11/2015.
