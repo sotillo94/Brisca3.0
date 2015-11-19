@@ -7,7 +7,7 @@ import java.util.Collections;
 public class Baraja {
 
     private ArrayList<Carta> baraja;
-    private String[] palos = {"oros", "copas", "espadas", "bastos"};
+    private String[] palos = {"o", "c", "e", "b"};
 
     /* Inicializa una nueva baraja */
     public Baraja(){
