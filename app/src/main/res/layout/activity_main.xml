@@ -3,8 +3,8 @@
     android:layout_width="wrap_content">
 <LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -14,13 +14,14 @@
     android:background="@drawable/background"
     >
 
-    <TextView android:text="@string/titulo"
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/imageView"
         android:layout_gravity="center_horizontal"
-        android:textSize="60sp"
-        android:textStyle="bold"/>
-
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/titulo1"/>
 
     <Button
         android:layout_width="match_parent"
@@ -51,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/boton3"
-        android:id="@+id/button3"
+        android:id="@+id/buttonEstadisticas"
         android:layout_marginBottom="5sp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/redondo"

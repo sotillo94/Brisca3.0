@@ -91,4 +91,20 @@
 
     <!--Conectar-->
     <string name="conect_enviar">Enviar</string>
+
+    <!--Partida-->
+    <string name="partida_titulo">Partida</string>
+    <string name="partida_jugador1">Jugador 1</string>
+    <string name="partida_jugador2">Jugador 2</string>
+    <string name="partida_mensajes">Mensajes</string>
+    <string name="partida_carta3j2">Carta 3 del jugador 2</string>
+    <string name="partida_carta2j2">Carta 2 del jugador 2</string>
+    <string name="partida_carta1j2">Carta 1 del jugador 2</string>
+    <string name="partida_carta3j1">Carta 3 del jugador 1</string>
+    <string name="partida_carta2j1">Carta 2 del jugador 1</string>
+    <string name="partida_carta1j1">Carta 1 del jugador 1</string>
+    <string name="partida_mazo">Mazo de cartas</string>
+    <string name="partida_pinta">Carta que pinta</string>
+    <string name="partida_espacio1">Espacio para que el jugador 1 coloque su carta</string>
+    <string name="partida_espacio2">Espacio para que el jugador 2 coloque su carta</string>
 </resources>
