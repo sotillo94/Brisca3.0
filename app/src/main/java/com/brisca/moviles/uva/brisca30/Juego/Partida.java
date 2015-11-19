@@ -11,7 +11,7 @@ public class Partida {
     private String paloTriunfo;
     private int numJugadorMano;
 
-    /* Inicializa una partida con los equipos, el numero de juegos indicados y le asigna una baraja.
+    /* Inicializa una partida con los equipos, el numero 965de juegos indicados y le asigna una baraja.
     El número de integrantes del equipo debe ser el mismo.
      */
     public Partida(Equipo eq1, Equipo eq2, int jue){
