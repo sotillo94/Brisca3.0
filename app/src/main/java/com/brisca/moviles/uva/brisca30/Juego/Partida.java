@@ -56,6 +56,56 @@ public class Partida {
         return c;
     }
 
+    //Devuelve true si la carta es del palo del triunfo y false en caso contrario
+    private boolean esTriunfo(Carta c){
+        if(c.getPalo() == paloTriunfo){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    //Devuelve la carta ganadora de la baza. La carta "primera" el la que se ha jugado en primer lugar
+    public Carta determinarCartaGanadora(Carta primera, Carta segunda){
+
+        String palo1, palo2;
+        int valor1, valor2;
+        boolean triunfo1, triunfo2;
+
+        palo1 = primera.getPalo();
+        palo2 = segunda.getPalo();
+        valor1 = primera.getValor();
+        valor2 = segunda.getValor();
+        triunfo1 = esTriunfo(primera);
+        triunfo2 = esTriunfo(segunda);
+
+        if(triunfo1) { //Primera carta es triunfo
+            if (triunfo2) { //Segunda carta es triunfo
+                if (valor1 > valor2) {
+                    return primera;
+                } else {
+                    return segunda;
+                }
+            } else { //Segunda carta no es triunfo
+                return primera;
+            }
+        } else{ //Primera carta no es triunfo
+            if(triunfo2){ //Segunda carta es triunfo
+                return segunda;
+            } else{ //Segunda carta no es triunfo
+                if(palo1 == palo2){ //Las dos cartas son del mismo palo no triunfo
+                    if (valor1 > valor2) {
+                        return primera;
+                    } else {
+                        return segunda;
+                    }
+                } else{ //Las dos cartas son de distinto palo no triunfo
+                    return primera;
+                }
+            }
+
+        }
+    }
 
 
 }
