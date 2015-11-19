@@ -11,7 +11,7 @@ public class Interfaz extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interfaz_juego);
+        setContentView(R.layout.activity_interfaz_juego2);
 
     }
 
