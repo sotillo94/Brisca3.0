@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button botonInstrucciones;
     Button botonCrearPartida;
     Button botonUnirPartida;
+    Button botonEstadisticas;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         botonUnirPartida=(Button) findViewById(R.id.buttonUnirPartida);
         botonUnirPartida.setOnClickListener(this);
+
+        botonEstadisticas=(Button) findViewById(R.id.buttonEstadisticas);
+        botonEstadisticas.setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.buttonInstrucciones:
                 Intent intentInstrucciones = new Intent(MainActivity.this,InstruccionesBrisca.class);
                 startActivity(intentInstrucciones);
+                break;
+            case R.id.buttonEstadisticas:
+                Intent intentEstadisticas = new Intent(MainActivity.this,Interfaz.class);
+                startActivity(intentEstadisticas);
                 break;
             case R.id.buttonCrearPartida:
                 Intent intentCrearPartida = new Intent(MainActivity.this,CrearNuevaPartida.class);
