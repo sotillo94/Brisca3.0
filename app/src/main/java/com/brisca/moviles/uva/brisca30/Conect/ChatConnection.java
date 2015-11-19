@@ -74,13 +74,13 @@ public class ChatConnection {
     }
     
 
-    public synchronized void updateMessages(String msg, boolean local) {
+    public synchronized void updateMessages(String msg, boolean local, InetAddress mAddress) {
         Log.e(TAG, "Updating message: " + msg);
-
+        String IP=mAddress.toString();
         if (local) {
-            msg = "me: " + msg;
+            msg = "me: " +IP+ msg;
         } else {
-            msg = "them: " + msg;
+            msg = "them: " +IP+ msg;
         }
 
         Bundle messageBundle = new Bundle();
@@ -204,6 +204,8 @@ public class ChatConnection {
                     mRecThread = new Thread(new ReceivingThread());
                     mRecThread.start();
 
+
+
                 } catch (UnknownHostException e) {
                     Log.d(CLIENT_TAG, "Initializing socket failed, UHE", e);
                 } catch (IOException e) {
@@ -236,7 +238,7 @@ public class ChatConnection {
                         messageStr = input.readLine();
                         if (messageStr != null) {
                             Log.d(CLIENT_TAG, "Read from the stream: " + messageStr);
-                            updateMessages(messageStr, false);
+                            updateMessages(messageStr, false, mAddress);
                         } else {
                             Log.d(CLIENT_TAG, "The nulls! The nulls!");
                             break;
@@ -272,7 +274,7 @@ public class ChatConnection {
                                 new OutputStreamWriter(getSocket().getOutputStream())), true);
                 out.println(msg);
                 out.flush();
-                updateMessages(msg, true);
+                updateMessages(msg, true,mAddress);
             } catch (UnknownHostException e) {
                 Log.d(CLIENT_TAG, "Unknown Host", e);
             } catch (IOException e) {

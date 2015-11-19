@@ -92,6 +92,8 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             sleep(1000);
             conectar();
             NombrePartida.setText("Conectado");
+            sleep(1000);
+            cliente();
 
 
 
@@ -129,6 +131,10 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
+    public void cliente(){
+        String name="andres";
+        enviar("OK-"+name);
+    }
 
     public void enviar() {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
@@ -136,6 +142,16 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             String messageString = messageView.getText().toString();
             if (!messageString.isEmpty()) {
                 mConnection.sendMessage(messageString);
+            }
+            messageView.setText("");
+        }
+    }
+
+    public void enviar(String x) {
+        EditText messageView = (EditText) this.findViewById(R.id.chatInput);
+        if (messageView != null) {
+            if (!x.isEmpty()) {
+                mConnection.sendMessage(x);
             }
             messageView.setText("");
         }
@@ -185,11 +201,14 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
                 break;
                 */
             case R.id.send_btn:
-                enviar();
+                enviar("puta");
                 break;
             default:
                 break;
         }
 
+
+
     }
+
 }
