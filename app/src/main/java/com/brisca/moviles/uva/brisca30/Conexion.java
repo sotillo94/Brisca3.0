@@ -143,16 +143,16 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             if (!messageString.isEmpty()) {
                 mConnection.sendMessage(messageString);
             }
-            messageView.setText("");
+            enviar("puta");
         }
     }
 
     public void enviar(String x) {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
         if (messageView != null) {
-            if (!x.isEmpty()) {
-                mConnection.sendMessage(x);
-            }
+            mConnection.sendMessage(x);
+
+
             messageView.setText("");
         }
     }
@@ -164,7 +164,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onPause() {
         if (mNsdHelper != null) {
-            mNsdHelper.stopDiscovery();
+            mNsdHelper.tearDown();
         }
         super.onPause();
     }
@@ -173,6 +173,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
     protected void onResume() {
         super.onResume();
         if (mNsdHelper != null) {
+            mNsdHelper.registerService(mConnection.getLocalPort());
             mNsdHelper.discoverServices();
         }
     }
@@ -183,6 +184,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         mConnection.tearDown();
         super.onDestroy();
     }
+
 
     @Override
     public void onClick(View v) {
@@ -201,7 +203,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
                 break;
                 */
             case R.id.send_btn:
-                enviar("puta");
+                enviar();
                 break;
             default:
                 break;

@@ -77,11 +77,14 @@ public class ChatConnection {
     public synchronized void updateMessages(String msg, boolean local, InetAddress mAddress) {
         Log.e(TAG, "Updating message: " + msg);
         String IP=mAddress.toString();
+        /*
         if (local) {
             msg = "me: " +IP+ msg;
         } else {
             msg = "them: " +IP+ msg;
-        }
+        }*/
+
+        msg = IP + "-" + msg;
 
         Bundle messageBundle = new Bundle();
         messageBundle.putString("msg", msg);
