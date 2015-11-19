@@ -66,9 +66,11 @@ public class NsdHelper {
                     Log.d(TAG, "Unknown Service Type: " + service.getServiceType());
                 } else if (service.getServiceName().equals(mServiceName)) {
                     Log.d(TAG, "Same machine: " + mServiceName);
-                    mNsdManager.resolveService(service, mResolveListener);
+                    /*mNsdManager.resolveService(service, mResolveListener);
+                    return;*/
                 } else if (service.getServiceName().contains(mServiceName)){
                     mNsdManager.resolveService(service, mResolveListener);
+                    return;
                 }
             }
 
@@ -113,7 +115,7 @@ public class NsdHelper {
 
                 if (serviceInfo.getServiceName().equals(mServiceName)) {
                     Log.d(TAG, "Same IP.");
-                    mService = serviceInfo;
+                    //mService = serviceInfo;
                     return;
                 }
                 mService = serviceInfo;

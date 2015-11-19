@@ -82,19 +82,15 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
 
 
         if(crear){
-
+            NsdHelper.mServiceName=NsdHelper.mServiceName+"Serv";
             crear();
-
             NombrePartida.setText("Creado");
         }
         else {
 
             descubrir();
-
-            sleep(1000);
-
+            sleep(10000);
             conectar();
-
             NombrePartida.setText("Conectado");
 
 
@@ -127,6 +123,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             Log.d(TAG, "Connecting.");
             mConnection.connectToServer(service.getHost(),
                     service.getPort());
+
         } else {
             Log.d(TAG, "No service to connect to!");
         }
