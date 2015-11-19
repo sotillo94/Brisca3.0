@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button botonCrearPartida;
     Button botonUnirPartida;
     Button botonEstadisticas;
+    Button botonPreferencias;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         botonEstadisticas=(Button) findViewById(R.id.buttonEstadisticas);
         botonEstadisticas.setOnClickListener(this);
+
+        botonPreferencias=(Button) findViewById(R.id.buttonPreferencias);
+        botonPreferencias.setOnClickListener(this);
     }
 
     @Override
@@ -91,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 startActivity(intentUnirPartida);
                 break;
+            case R.id.buttonPreferencias:
+                Intent intentPreferencias = new Intent(MainActivity.this,Preferencias.class);
+                startActivity(intentPreferencias);
             default:
                 break;
         }

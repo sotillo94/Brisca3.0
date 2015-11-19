@@ -7,6 +7,7 @@
     <string name="boton3">Estadísticas</string>
     <string name="boton4">Instrucciones</string>
     <string name="boton5">Reglas</string>
+    <string name="boton6">Preferencias</string>
     <string name="action_settings">Ajustes</string>
 
     <!--ReglasBrisca-->

@@ -7,6 +7,7 @@
     <string name="boton3">Estadísticas</string>
     <string name="boton4">Instrucciones</string>
     <string name="boton5">Reglas</string>
+    <string name="boton6">Preferencias</string>
     <string name="action_settings">Ajustes</string>
 
     <!--ReglasBrisca-->
@@ -107,4 +108,11 @@
     <string name="partida_pinta">Carta que pinta</string>
     <string name="partida_espacio1">Espacio para que el jugador 1 coloque su carta</string>
     <string name="partida_espacio2">Espacio para que el jugador 2 coloque su carta</string>
+
+    <!--Preferencias-->
+    <string name="pref_categoria1_title">Datos de jugador</string>
+    <string name="noInicializado">No inicializado</string>
+    <string name="pref_nombreusuario">Nombre de jugador</string>
+    <string name="pref_nombreusuario_summary">Cambiar el nombre de usuario</string>
+    <string name="pref_nombreusuario_dialog">Nombre</string>
 </resources>
