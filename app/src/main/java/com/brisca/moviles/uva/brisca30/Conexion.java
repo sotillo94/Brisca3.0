@@ -66,7 +66,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         botonEnviar=(Button) findViewById(R.id.send_btn);
         botonEnviar.setOnClickListener(this);
 
-
+        //Aqui recibimos datos
         mUpdateHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -93,7 +93,10 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             conectar();
             NombrePartida.setText("Conectado");
             sleep(1000);
-            cliente();
+            mNsdHelper.stopDiscovery();
+
+            String name="andres";
+            enviar("OKc-" + name);
 
 
 
@@ -131,11 +134,8 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    public void cliente(){
-        String name="andres";
-        enviar("OK-"+name);
-    }
 
+    //Aqui pasamos datos
     public void enviar() {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
         if (messageView != null) {

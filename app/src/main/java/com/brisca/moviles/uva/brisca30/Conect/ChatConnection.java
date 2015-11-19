@@ -76,15 +76,15 @@ public class ChatConnection {
 
     public synchronized void updateMessages(String msg, boolean local, InetAddress mAddress) {
         Log.e(TAG, "Updating message: " + msg);
-        String IP=mAddress.toString();
-        /*
-        if (local) {
-            msg = "me: " +IP+ msg;
-        } else {
-            msg = "them: " +IP+ msg;
-        }*/
+        //String IP=mAddress.toString();
 
-        msg = IP + "-" + msg;
+        if (local) {
+            msg = "me: " + msg;
+        } else {
+            msg = "them: " + msg;
+        }
+
+
 
         Bundle messageBundle = new Bundle();
         messageBundle.putString("msg", msg);
