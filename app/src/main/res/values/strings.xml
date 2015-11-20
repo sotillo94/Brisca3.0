@@ -9,6 +9,7 @@
     <string name="boton5">Reglas</string>
     <string name="boton6">Preferencias</string>
     <string name="action_settings">Ajustes</string>
+    <string name="nombrePartida">Nombre de la Partida</string>
 
     <!--ReglasBrisca-->
     <string name="title_activity_reglas_brisca">Reglas de la Brisca</string>
