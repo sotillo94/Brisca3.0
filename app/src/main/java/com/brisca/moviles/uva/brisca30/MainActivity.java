@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -61,44 +61,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
+        /*Para cada boton de la actividad se inicia la actividad correspondiente a ese boton*/
         switch (v.getId()){
             case R.id.buttonReglas:
                 Intent intentReglas = new Intent(MainActivity.this,ReglasBrisca.class);
                 startActivity(intentReglas);
                 break;
+
             case R.id.buttonInstrucciones:
                 Intent intentInstrucciones = new Intent(MainActivity.this,InstruccionesBrisca.class);
                 startActivity(intentInstrucciones);
                 break;
+
             case R.id.buttonEstadisticas:
                 Intent intentEstadisticas = new Intent(MainActivity.this,Interfaz.class);
                 startActivity(intentEstadisticas);
                 break;
+
             case R.id.buttonCrearPartida:
                 Intent intentCrearPartida = new Intent(MainActivity.this,CrearNuevaPartida.class);
-
                 Bundle datos=new Bundle();
                 datos.putBoolean("crear",true);
                 intentCrearPartida.putExtras(datos);
-
                 startActivity(intentCrearPartida);
                 break;
+
             case R.id.buttonUnirPartida:
                 Intent intentUnirPartida = new Intent(MainActivity.this,CrearNuevaPartida.class);
-
                 Bundle datos2=new Bundle();
                 datos2.putBoolean("crear",false);
                 intentUnirPartida.putExtras(datos2);
-
                 startActivity(intentUnirPartida);
                 break;
+
             case R.id.buttonPreferencias:
                 Intent intentPreferencias = new Intent(MainActivity.this,Preferencias.class);
                 startActivity(intentPreferencias);
+                break;
+
             default:
                 break;
         }
