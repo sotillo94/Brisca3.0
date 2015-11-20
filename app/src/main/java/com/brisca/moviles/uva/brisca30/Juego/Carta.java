@@ -1,18 +1,27 @@
 package com.brisca.moviles.uva.brisca30.Juego;
 
-/* Implementa una carta de la baraja */
+/**
+ * Implementa una carta de la baraja española
+ */
 public class Carta {
 
     private int numero;
     private String palo;
 
-    /* Inicializa una nueva carta con el número y el palo indicados */
+    /**
+     * Inicializa una nueva carta con el número y el palo indicados
+     * @param numero representa el número de la carta
+     * @param palo representa el palo al que pertenece la carta
+     */
     public Carta(int numero, String palo){
         this.numero = numero;
         this.palo = palo;
     }
 
-    /* Devuelve la puntuación de la carta para el conteo final */
+    /**
+     * Devuelve la puntuación de la carta para el conteo final
+     * @return entero que representa la puntuación de la carta
+     */
     public int getPuntos() {
         int p = 0;
         switch (numero){
@@ -39,17 +48,27 @@ public class Carta {
         return p;
     }
 
-    //Devuelve el palo de la carta
+    /**
+     * Devuelve el palo de la carta
+     * @return String que representa el palo al que pertenece la carta
+     */
     public String getPalo(){
         return palo;
     }
 
-    //Devuelve el número de la carta
+    /**
+     * Devuelve el número de la carta
+     * @return entero que representa el numero de la carta
+     */
     public int getNumero(){
         return numero;
     }
 
-    //Devuelve el valor de la carta para determinar la ganadora de una baza
+    /**
+     * Devuelve el valor de la carta para determinar la ganadora de una baza. No es la puntuación
+     * de la carta para el conteo final, solo se utiliza para la baza.
+     * @return entero que representa el valor de la carta
+     */
     public int getValor(){
         int valor = 0;
 

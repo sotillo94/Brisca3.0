@@ -3,13 +3,17 @@ package com.brisca.moviles.uva.brisca30.Juego;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/* Implementa el mazo de cartas que utilizan los jugadores */
+/**
+ * Implementa el mazo de cartas de la baraja española que utilizan los jugadores
+ */
 public class Baraja {
 
     private ArrayList<Carta> baraja;
     private String[] palos = {"o", "c", "e", "b"};
 
-    /* Inicializa una nueva baraja */
+    /**
+     * Inicializa una nueva baraja española
+     */
     public Baraja(){
         int i;
         baraja = new ArrayList<Carta>();
@@ -26,12 +30,17 @@ public class Baraja {
         }
     }
 
-    //Mezcla las cartas de la baraja
+    /**
+     * Mezcla las cartas de la baraja aleatoriamente
+     */
     public void mezclar(){
         Collections.shuffle(baraja);
     }
 
-    //Devuelve la primera carta de la baraja
+    /**
+     * Devuelve la primera carta de la baraja
+     * @return Carta que se encuentra en la primera posición de la baraja
+     */
     public Carta saca(){
         return baraja.remove(0);
     }

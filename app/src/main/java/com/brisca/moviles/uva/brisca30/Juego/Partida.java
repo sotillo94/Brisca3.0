@@ -1,6 +1,8 @@
 package com.brisca.moviles.uva.brisca30.Juego;
 
-/* Implementa una partida de brisca */
+/**
+ * Implementa la lógica de la partida de brisca
+ */
 public class Partida {
 
     private Baraja baraja;
@@ -11,8 +13,12 @@ public class Partida {
     private String paloTriunfo;
     private int numJugadorMano;
 
-    /* Inicializa una partida con los equipos, el numero de juegos indicados y le asigna una baraja.
-    El número de integrantes del equipo debe ser el mismo.
+    /**
+     * Inicializa una partida con los equipos y el numero de juegos indicados y le asigna una baraja.
+     * El número de integrantes del equipo debe ser el mismo.
+     * @param eq1 representa uno de los equipos de la partida
+     * @param eq2 representa uno de los equipos de la partida
+     * @param jue representa el número de juegos a los que se va a jugar la partida
      */
     public Partida(Equipo eq1, Equipo eq2, int jue){
         if(eq1.getTamEquipo() == eq2.getTamEquipo()) {
@@ -34,7 +40,9 @@ public class Partida {
         }
     }
 
-    //Reparte 3 cartas a cada jugador al inicial la partida
+    /**
+     * Reparte 3 cartas de la baraja a cada jugador de la partida
+     */
     public void repartir(){
         int i, j;
 
@@ -49,14 +57,21 @@ public class Partida {
         }
     }
 
-    //Asigna el palo que es triunfo y devuelve la primera carta de la baraja
+    /**
+     * Devuelve la primera carta de la baraja, determinando que palo es triunfo
+     * @return primera Carta de la baraja
+     */
     public Carta asignarTriunfo(){
         Carta c = baraja.saca();
         paloTriunfo = c.getPalo();
         return c;
     }
 
-    //Devuelve true si la carta es del palo del triunfo y false en caso contrario
+    /**
+     * Devuelve true si la carta es del palo del triunfo y false en caso contrario
+     * @param c representa la Carta que se quiere determinar si es triunfo
+     * @return true si la carta es triunfo y false en caso contrario
+     */
     private boolean esTriunfo(Carta c){
         if(c.getPalo() == paloTriunfo){
             return true;
@@ -65,7 +80,12 @@ public class Partida {
         }
     }
 
-    //Devuelve la carta ganadora de la baza. La carta "primera" el la que se ha jugado en primer lugar
+    /**
+     * Devuelve la carta ganadora de la baza. La carta "primera" es la que se ha jugado en primer lugar
+     * @param primera representa la Carta que se ha jugado en primer lugar en la baza
+     * @param segunda representa la Carta que se ha jugado en segundo lugar en la baza
+     * @return Carta que resulta ganadora de la comparación de las dos cartas en la baza
+     */
     public Carta determinarCartaGanadora(Carta primera, Carta segunda){
 
         String palo1, palo2;
