@@ -8,7 +8,10 @@ public class Equipo {
     public Jugador[] jugadores;
     private int tamEquipo;
 
-    /* Inicializa un nuevo equipo de un componente con los jugador indicado */
+    /**
+     *  Inicializa un nuevo equipo de un componente con los jugador indicado
+     *  @param jug1 jugador para crear el equipo
+     */
     public Equipo(Jugador jug1){
         this.monton = new Monton();
         this.juegos = 0;
@@ -17,7 +20,11 @@ public class Equipo {
         this.tamEquipo = 1;
     }
 
-    /* Inicializa un nuevo equipo de dos componentes con los jugadores indicados */
+    /**
+     *  Inicializa un nuevo equipo de dos componentes con los jugadores indicados
+     *  @param jug1 jugador 1
+     *  @param jug2 jugador 2
+     */
     public Equipo(Jugador jug1, Jugador jug2){
         this.monton = new Monton();
         this.juegos = 0;
@@ -27,7 +34,11 @@ public class Equipo {
         this.tamEquipo = 2;
     }
 
-    /* Inicializa un nuevo equipo de tres componentes con los jugadores indicados */
+    /** Inicializa un nuevo equipo de tres componentes con los jugadores indicados
+     * @param jug1 jugador 1
+     * @param jug2 jugador 2
+     * @param jug3 jugador 3
+     */
     public Equipo(Jugador jug1, Jugador jug2, Jugador jug3){
         this.monton = new Monton();
         this.juegos = 0;
@@ -38,17 +49,24 @@ public class Equipo {
         this.tamEquipo = 3;
     }
 
-    //Devuelve el número de integrantes del equipo
+    /**
+     * Devuelve el número de integrantes del equipo
+     * @return tamEquipo el tamano del equipo
+     */
     public int getTamEquipo(){
         return tamEquipo;
     }
 
-    //Suma un juego al equipo
+    /**
+     * Suma un juego al equipo
+     */
     public void sumarJuego(){
         juegos ++;
     }
 
-    //Devuelve el numero de juegos del equipo
+    /**
+     * Devuelve el numero de juegos del equipo
+     */
     public int getJuegos(){
         return juegos;
     }

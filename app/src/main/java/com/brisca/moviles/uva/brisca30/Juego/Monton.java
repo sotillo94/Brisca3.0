@@ -2,27 +2,42 @@ package com.brisca.moviles.uva.brisca30.Juego;
 
 import java.util.ArrayList;
 
-/* Implementa el monton de cartas que los jugadores han ganado a lo largo de la partida*/
+/**
+ * Implementa el montón de cartas que los jugadores han ganado a lo largo de la partida
+ */
 public class Monton {
 
     private ArrayList<Carta> monton;
 
-    /* Inicializa un nuevo Monton */
+    /**
+     * Constructor. Inicializa un nuevo Montón
+     */
     public Monton(){
         monton = new ArrayList<Carta>();
     }
 
-    //Añade una carta al monton
+    /**
+     * Añade una carta al montón
+     * @param c Carta a añadir al montón
+     */
     public void meter(Carta c){
         monton.add(c);
     }
 
-    //Saca una carta del monton
+    /**
+     * Saca una carta del montón
+     *
+     * @return monton.remove(0) carta que elimina.
+     */
     private Carta sacar(){
         return monton.remove(0);
     }
 
-    //Devuelve la puntuación total del monton
+    /**
+     * Devuelve la puntuación total del montón
+     *
+     * @return puntos totales del montón.
+     */
     public int contar(){
         int puntos = 0;
         Carta carta;
