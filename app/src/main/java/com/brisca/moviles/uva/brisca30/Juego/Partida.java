@@ -73,11 +73,7 @@ public class Partida {
      * @return true si la carta es triunfo y false en caso contrario
      */
     private boolean esTriunfo(Carta c){
-        if(c.getPalo() == paloTriunfo){
-            return true;
-        } else{
-            return false;
-        }
+        return c.getPalo().equals(paloTriunfo);
     }
 
     /**
@@ -113,7 +109,7 @@ public class Partida {
             if(triunfo2){ //Segunda carta es triunfo
                 return segunda;
             } else{ //Segunda carta no es triunfo
-                if(palo1 == palo2){ //Las dos cartas son del mismo palo no triunfo
+                if(palo1.equals(palo2)){ //Las dos cartas son del mismo palo no triunfo
                     if (valor1 > valor2) {
                         return primera;
                     } else {

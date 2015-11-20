@@ -23,7 +23,7 @@ public class Carta {
      * @return entero que representa la puntuación de la carta
      */
     public int getPuntos() {
-        int p = 0;
+        int p;
         switch (numero){
             case 1:
                 p = 11;

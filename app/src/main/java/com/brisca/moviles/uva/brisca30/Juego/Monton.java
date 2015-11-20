@@ -13,7 +13,7 @@ public class Monton {
      * Constructor. Inicializa un nuevo Montón
      */
     public Monton(){
-        monton = new ArrayList<Carta>();
+        monton = new ArrayList<>();
     }
 
     /**

@@ -9,15 +9,15 @@ import java.util.Collections;
 public class Baraja {
 
     private ArrayList<Carta> baraja;
-    private String[] palos = {"o", "c", "e", "b"};
+
 
     /**
      * Inicializa una nueva baraja española
      */
     public Baraja(){
         int i;
-        baraja = new ArrayList<Carta>();
-
+        baraja = new ArrayList<>();
+        String[] palos = {"o", "c", "e", "b"};
         for(String palo: palos){
             //Cartas de 1 al 7
             for(i = 1; i <= 7; i++){

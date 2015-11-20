@@ -27,6 +27,12 @@
         android:text="@string/nombrePartida"
         android:id="@+id/NombrePartida" />
 
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:focusable="true" />
+
     <EditText
         android:id="@+id/chatInput"
         android:layout_width="fill_parent"
@@ -40,11 +46,5 @@
         android:layout_height="64dp"
         android:text="@string/conect_enviar"
         android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/status"
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:focusable="true" />
 
 </LinearLayout>

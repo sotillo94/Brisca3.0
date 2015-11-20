@@ -31,9 +31,6 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
     //Chat
     private TextView mStatusView;
 
-    //Recoge los mensajes enviados
-    private Handler mUpdateHandler;
-
     Button botonEnviar;
     public String TAG = "NsdChat";
 
@@ -58,7 +55,8 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
 
         //Ponemos como nombre del servicio el nombre que introdujo el usuario en la actividad anterior
         NsdHelper.mServiceName=NsdHelper.mServiceName+datos.getString("nombrePartida");
-
+        //Recoge los mensajes enviados
+        Handler mUpdateHandler;
         //Aqui recibimos datos
         mUpdateHandler = new Handler() {
             @Override
