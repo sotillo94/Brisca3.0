@@ -66,6 +66,7 @@ public class Equipo {
 
     /**
      * Devuelve el numero de juegos del equipo
+     * @return numero de juegos que ha ganado el equipo
      */
     public int getJuegos(){
         return juegos;
