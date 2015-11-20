@@ -111,9 +111,13 @@
     <string name="partida_espacio2">Espacio para que el jugador 2 coloque su carta</string>
 
     <!--Preferencias-->
-    <string name="pref_categoria1_title">Datos de jugador</string>
+    <string name="pref_categoria1_title">Datos de Jugador</string>
+    <string name="pref_categoria2_title">Datos del Juego</string>
     <string name="noInicializado">No inicializado</string>
     <string name="pref_nombreusuario">Nombre de jugador</string>
     <string name="pref_nombreusuario_summary">Cambiar el nombre de usuario</string>
     <string name="pref_nombreusuario_dialog">Nombre</string>
+    <string name="pref_idioma_title">Idioma</string>
+    <string name="pref_idioma_summary">idioma del juego (aún no funciona)</string>
+    <string name="pref_idioma_dialog">Indicar Idioma</string>
 </resources>

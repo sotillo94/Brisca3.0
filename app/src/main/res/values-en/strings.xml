@@ -9,6 +9,7 @@
     <string name="boton5">Rules</string>
     <string name="boton6">Preferences</string>
     <string name="action_settings">Settings</string>
+    <string name="nombrePartida">Game Name</string>
 
     <!--ReglasBrisca-->
     <string name="title_activity_reglas_brisca">Briscas Rules</string>
@@ -107,6 +108,16 @@
     <string name="partida_pinta">Carta que pinta</string>
     <string name="partida_espacio1">Space for player 1 place his card</string>
     <string name="partida_espacio2">Space for player 2 place his card</string>
+
+    <!--Preferencias-->
+    <string name="pref_categoria1_title">Player info</string>
+    <string name="pref_categoria2_title">Game info</string>
+    <string name="pref_nombreusuario">Player name</string>
+    <string name="pref_nombreusuario_summary">Change player name</string>
+    <string name="pref_nombreusuario_dialog">Name</string>
+    <string name="pref_idioma_title">Lenguage</string>
+    <string name="pref_idioma_summary">Game lenguage(not implemented jet)</string>
+    <string name="pref_idioma_dialog">Select lenguage</string>
 </resources>
 
 
