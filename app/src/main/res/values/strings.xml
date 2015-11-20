@@ -111,6 +111,10 @@
     <string name="partida_espacio2">Espacio para que el jugador 2 coloque su carta</string>
 
     <!--Preferencias-->
+    <string name="ingles">Ingles</string>
+    <string name="espanol">Español</string>
+    <string name="ingles_abr">ENG</string>
+    <string name="espanol_abr">ESP</string>
     <string name="pref_categoria1_title">Datos de Jugador</string>
     <string name="pref_categoria2_title">Datos del Juego</string>
     <string name="noInicializado">No inicializado</string>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="idioma">
-        <item>English</item>
-        <item>Español</item>
+        <item>@string/ingles</item>
+        <item>@string/espanol</item>
     </string-array>
     <string-array name="codigoidioma">
-        <item>ESP</item>
-        <item>ENG</item>
+        <item>@string/ingles_abr</item>
+        <item>@string/espanol_abr</item>
     </string-array>
 </resources>

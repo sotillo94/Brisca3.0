@@ -110,8 +110,11 @@
     <string name="partida_espacio2">Space for player 2 place his card</string>
 
     <!--Preferencias-->
+    <string name="ingles">English</string>
+    <string name="espanol">Spanish</string>
     <string name="pref_categoria1_title">Player info</string>
     <string name="pref_categoria2_title">Game info</string>
+    <string name="noInicializado">Not inicializated</string>
     <string name="pref_nombreusuario">Player name</string>
     <string name="pref_nombreusuario_summary">Change player name</string>
     <string name="pref_nombreusuario_dialog">Name</string>
