@@ -34,7 +34,11 @@ import java.net.UnknownHostException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+/**
+ * Clase encargada de llevar la logica del chat
+ */
 public class ChatConnection {
+
 
     private Handler mUpdateHandler;
     private ChatServer mChatServer;
@@ -43,58 +47,92 @@ public class ChatConnection {
     private static final String TAG = "ChatConnection";
 
     private Socket mSocket;
+    //Elegimos -1 para que sea el so el que decida el puerto
     private int mPort = -1;
 
+    /**
+     * Se encarga de controlar el chat de la conexion
+     * @param handler controlador de la conexion
+     */
     public ChatConnection(Handler handler) {
         mUpdateHandler = handler;
         mChatServer = new ChatServer(handler);
     }
 
+    /**
+     * Acaba con la conexion
+     */
     public void tearDown() {
         mChatServer.tearDown();
         mChatClient.tearDown();
     }
 
+    /**
+     * Se conecta a un servidor dados una IP y un puerto
+     * @param address direccion IP del servidor
+     * @param port puerto del servidor
+     */
     public void connectToServer(InetAddress address, int port) {
         mChatClient = new ChatClient(address, port);
     }
 
+    /**
+     * Envia el mensaje
+     * @param msg mensaje aenviar
+     */
     public void sendMessage(String msg) {
         if (mChatClient != null) {
             mChatClient.sendMessage(msg);
         }
     }
-    
+
+    /**
+     * Obtiene el puerto local
+     * @return devuelve el puerto local
+     */
     public int getLocalPort() {
         return mPort;
     }
-    
+
+    /**
+     * Actualiza el puerto local
+     * @param port puerto al que deseamos cambiar
+     */
     public void setLocalPort(int port) {
         mPort = port;
     }
-    
 
+    /**
+     * Diferencia los mensajes enviados localmente de los externos.
+     * Envia mensajes
+     * @param msg mensaje a enviar
+     * @param local decide si el mensaje es local o externo
+     * @param mAddress IP que se enviara
+     */
     public synchronized void updateMessages(String msg, boolean local, InetAddress mAddress) {
         Log.e(TAG, "Updating message: " + msg);
-        //String IP=mAddress.toString();
+        String IP=mAddress.toString();
 
         if (local) {
-            msg = "me: " + msg;
+            msg = "me: "+IP+"-" + msg;
         } else {
-            msg = "them: " + msg;
+            msg = "them: "+IP+"-" + msg;
         }
-
-
 
         Bundle messageBundle = new Bundle();
         messageBundle.putString("msg", msg);
 
         Message message = new Message();
         message.setData(messageBundle);
+        //Enviamos el mensaje
         mUpdateHandler.sendMessage(message);
 
     }
 
+    /**
+     * inicia la conexion con un socket(IP+puerto+protocolo)
+     * @param socket socket con el cual queremos iniciar la conexion
+     */
     private synchronized void setSocket(Socket socket) {
         Log.d(TAG, "setSocket being called.");
         if (socket == null) {
@@ -113,10 +151,17 @@ public class ChatConnection {
         mSocket = socket;
     }
 
+    /**
+     * Obtener socket actual
+     * @return socket actual
+     */
     private Socket getSocket() {
         return mSocket;
     }
 
+    /**
+     * Se encarga de la logica del servidor del chat
+     */
     private class ChatServer {
         ServerSocket mServerSocket = null;
         Thread mThread = null;
@@ -164,6 +209,9 @@ public class ChatConnection {
         }
     }
 
+    /**
+     * Se encarga de la logica del cliente en el chat
+     */
     private class ChatClient {
 
         private InetAddress mAddress;
@@ -190,7 +238,7 @@ public class ChatConnection {
             private int QUEUE_CAPACITY = 10;
 
             public SendingThread() {
-                mMessageQueue = new ArrayBlockingQueue<String>(QUEUE_CAPACITY);
+                mMessageQueue = new ArrayBlockingQueue<>(QUEUE_CAPACITY);
             }
 
             @Override
@@ -237,7 +285,7 @@ public class ChatConnection {
                             mSocket.getInputStream()));
                     while (!Thread.currentThread().isInterrupted()) {
 
-                        String messageStr = null;
+                        String messageStr;
                         messageStr = input.readLine();
                         if (messageStr != null) {
                             Log.d(CLIENT_TAG, "Read from the stream: " + messageStr);

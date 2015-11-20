@@ -1,7 +1,6 @@
 package com.brisca.moviles.uva.brisca30;
 
-import android.app.Activity;
-import android.content.Intent;
+
 import android.net.nsd.NsdServiceInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,59 +11,53 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import android.app.Activity;
-import android.net.nsd.NsdServiceInfo;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
+import static android.os.SystemClock.sleep;
 
 import com.brisca.moviles.uva.brisca30.Conect.ChatConnection;
 import com.brisca.moviles.uva.brisca30.Conect.NsdHelper;
 
-import static android.os.SystemClock.sleep;
-
+/**
+ * Esta clase es la encargada de mostrar y controlar la interfaz del chat.
+ * Además inicia el servidio en caso de ser servidor y busca y conecta a servicios en caso de ser cliente.
+ */
 public class Conexion extends AppCompatActivity implements View.OnClickListener {
-    TextView NombrePartida;
+
+    //Utilizado para mostrar el estado de la conexion
+    TextView estadoPartida;
+
+    //Estado de la conexion
     NsdHelper mNsdHelper;
 
+    //Chat
     private TextView mStatusView;
+
+    //Recoge los mensajes enviados
     private Handler mUpdateHandler;
-    Button botonCrear;
-    Button botonDescubrir;
-    Button botonConectar;
+
     Button botonEnviar;
     public String TAG = "NsdChat";
 
+    //Estado del chat
     ChatConnection mConnection;
 
-    /** Called when the activity is first created. */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conexion);
+        //accedemos a los campos del layout
         mStatusView = (TextView) findViewById(R.id.status);
+        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
+        botonEnviar=(Button) findViewById(R.id.send_btn);
+        botonEnviar.setOnClickListener(this);//Le activamos el onClickListener
 
-        NombrePartida=(TextView)findViewById(R.id.NombrePartida);
+        //Recogemos los datos que nos ha pasado la activity anterior
         Bundle datos= getIntent().getExtras();
-        NombrePartida.setText(datos.getString("nombrePartida"));
-        NsdHelper.mServiceName=NsdHelper.mServiceName+datos.getString("nombrePartida");
+        estadoPartida.setText(datos.getString("nombrePartida"));
         boolean crear=datos.getBoolean("crear");
 
-        /*
-        botonCrear=(Button) findViewById(R.id.advertise_btn);
-        botonCrear.setOnClickListener(this);
-        botonDescubrir=(Button) findViewById(R.id.discover_btn);
-        botonDescubrir.setOnClickListener(this);
-        botonConectar=(Button) findViewById(R.id.connect_btn);
-        botonConectar.setOnClickListener(this);
-        */
-        botonEnviar=(Button) findViewById(R.id.send_btn);
-        botonEnviar.setOnClickListener(this);
+        //Ponemos como nombre del servicio el nombre que introdujo el usuario en la actividad anterior
+        NsdHelper.mServiceName=NsdHelper.mServiceName+datos.getString("nombrePartida");
 
         //Aqui recibimos datos
         mUpdateHandler = new Handler() {
@@ -75,36 +68,41 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             }
         };
 
+        //inicializamos el chat
         mConnection = new ChatConnection(mUpdateHandler);
-
+        //inicializamos la conexion
         mNsdHelper = new NsdHelper(this);
+        //la conexion se inicia
         mNsdHelper.initializeNsd();
 
 
         if(crear){
+            //Si es servidor debe crear un servicio, se le anade Serv al final para que no se intente conectar así mismo
             NsdHelper.mServiceName=NsdHelper.mServiceName+"Serv";
             crear();
-            NombrePartida.setText("Creado");
+            estadoPartida.setText("Creado");
         }
         else {
-
+            //Se buscan servicios
             descubrir();
             sleep(1000);
+            //Se conecta
             conectar();
-            NombrePartida.setText("Conectado");
+            estadoPartida.setText("Conectado");
             sleep(1000);
+            //Se para de buscar servicios
             mNsdHelper.stopDiscovery();
-
-            String name="andres";
-            enviar("OKc-" + name);
-
-
+            sleep(1000);
+            //Se envia un mensaje de OK
+            enviar("OKc");
 
         }
-
 
     }
 
+    /**
+     * Crea un nuevo servicio
+     */
     public void crear() {
 
         // Register service
@@ -116,12 +114,16 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-
+    /**
+     * Busca servicios a los que conectarse
+     */
     public void descubrir() {
         mNsdHelper.discoverServices();
     }
 
-
+    /**
+     * Se conecta al servicio con mismo nombre
+     */
     public void conectar() {
         NsdServiceInfo service = mNsdHelper.getChosenServiceInfo();
         if (service != null) {
@@ -134,8 +136,10 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-
-    //Aqui pasamos datos
+    /**
+     * envia la cadena de texto que aparece en el editText del layout
+     * si esta vacio envia "Enviar vacio"
+     */
     public void enviar() {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
         if (messageView != null) {
@@ -143,20 +147,26 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             if (!messageString.isEmpty()) {
                 mConnection.sendMessage(messageString);
             }
-            enviar("puta");
+            enviar("Enviar vacio");
         }
     }
 
+    /**
+     * envia la cadena de texto introducida como parametro
+     * @param x es el mensaje que se desea enviar
+     */
     public void enviar(String x) {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
         if (messageView != null) {
             mConnection.sendMessage(x);
-
-
             messageView.setText("");
         }
     }
 
+    /**
+     * Es el encargado de mostrar en el chat el mensaje recibido
+     * @param line mensaje que recibimos y sera mostrado
+     */
     public void addChatLine(String line) {
         mStatusView.append("\n" + line);
     }
@@ -191,25 +201,13 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
 
 
         switch (v.getId()){
-            /*
-            case R.id.advertise_btn:
-                crear();
-                break;
-            case R.id.discover_btn:
-                descubrir();
-                break;
-            case R.id.connect_btn:
-                conectar();
-                break;
-                */
             case R.id.send_btn:
+                //si pulsamos el boton enviar se llama a enviar()
                 enviar();
                 break;
             default:
                 break;
         }
-
-
 
     }
 

@@ -21,6 +21,9 @@ import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
 import android.util.Log;
 
+/**
+ * Clase que contiene los metodos para crear, descubrir y conectar a servicios
+ */
 public class NsdHelper {
 
     Context mContext;
@@ -70,7 +73,6 @@ public class NsdHelper {
                     return;*/
                 } else if (service.getServiceName().contains(mServiceName)){
                     mNsdManager.resolveService(service, mResolveListener);
-                    return;
                 }
             }
 
