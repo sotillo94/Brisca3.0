@@ -83,17 +83,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.buttonCrearPartida:
                 Intent intentCrearPartida = new Intent(MainActivity.this,CrearNuevaPartida.class);
-                Bundle datos=new Bundle();
+               /* Bundle datos=new Bundle();
                 datos.putBoolean("crear",true);
-                intentCrearPartida.putExtras(datos);
+                intentCrearPartida.putExtras(datos);*/
                 startActivity(intentCrearPartida);
                 break;
 
             case R.id.buttonUnirPartida:
-                Intent intentUnirPartida = new Intent(MainActivity.this,CrearNuevaPartida.class);
-                Bundle datos2=new Bundle();
+                Intent intentUnirPartida = new Intent(MainActivity.this,UnirseNuevaPartida.class);
+               /*Bundle datos2=new Bundle();
                 datos2.putBoolean("crear",false);
-                intentUnirPartida.putExtras(datos2);
+                intentUnirPartida.putExtras(datos2);*/
                 startActivity(intentUnirPartida);
                 break;
 

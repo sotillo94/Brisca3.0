@@ -52,8 +52,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Conexion"
+            android:name=".Servidor"
             android:label="@string/title_activity_crear_nueva_partida" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Cliente"
+            android:label="@string/title_activity_crear_nueva_partida" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UnirseNuevaPartida"
+            android:label="@string/title_activity_unirse_nueva_partida" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,22 +7,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/title_activity_crear_nueva_partida"
+        android:text="@string/title_activity_unirse_nueva_partida"
         android:id="@+id/titulo" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mens_nombre_partida"
-        android:hint="@string/mens_nombre_partida"
+        android:hint="@string/mens_nombre_unirse_partida"
         android:inputType="textEmailAddress"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/boton_crear"
+        android:text="New Button"
         android:id="@+id/buttonNombrePartida"
         android:layout_gravity="center_horizontal" />
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/status"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

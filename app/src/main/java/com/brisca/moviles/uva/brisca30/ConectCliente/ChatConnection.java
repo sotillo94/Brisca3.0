@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.brisca.moviles.uva.brisca30.Conect;
+package com.brisca.moviles.uva.brisca30.ConectCliente;
 
 import android.os.Bundle;
 import android.os.Handler;

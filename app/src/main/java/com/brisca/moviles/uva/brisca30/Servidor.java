@@ -13,14 +13,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import static android.os.SystemClock.sleep;
 
-import com.brisca.moviles.uva.brisca30.Conect.ChatConnection;
-import com.brisca.moviles.uva.brisca30.Conect.NsdHelper;
+import com.brisca.moviles.uva.brisca30.ConectServidor.ChatConnection;
+import com.brisca.moviles.uva.brisca30.ConectServidor.NsdHelper;
 
 /**
  * Esta clase es la encargada de mostrar y controlar la interfaz del chat.
  * Además inicia el servidio en caso de ser servidor y busca y conecta a servicios en caso de ser cliente.
  */
-public class Conexion extends AppCompatActivity implements View.OnClickListener {
+public class Servidor extends AppCompatActivity implements View.OnClickListener {
 
     //Utilizado para mostrar el estado de la conexion
     TextView estadoPartida;
@@ -41,7 +41,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conexion);
+        setContentView(R.layout.activity_conexion_servidor);
         //accedemos a los campos del layout
         mStatusView = (TextView) findViewById(R.id.status);
         estadoPartida=(TextView)findViewById(R.id.NombrePartida);
@@ -91,6 +91,7 @@ public class Conexion extends AppCompatActivity implements View.OnClickListener 
             //Se para de buscar servicios
             mNsdHelper.stopDiscovery();
             sleep(1000);
+
             //Se envia un mensaje de OK
             enviar("OKc");
 

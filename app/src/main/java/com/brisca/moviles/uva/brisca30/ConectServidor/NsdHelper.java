@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.brisca.moviles.uva.brisca30.Conect;
+package com.brisca.moviles.uva.brisca30.ConectServidor;
 
 import android.content.Context;
 import android.net.nsd.NsdManager;
