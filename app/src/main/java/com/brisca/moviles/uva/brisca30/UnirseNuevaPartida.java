@@ -86,7 +86,6 @@ public class UnirseNuevaPartida extends AppCompatActivity implements View.OnClic
                 Intent intentCrearPartida = new Intent(UnirseNuevaPartida.this,Cliente.class);
                 datos=new Bundle();
                 datos.putString("nombrePartida",nombre);
-                datos.putBoolean("crear",false);
                 intentCrearPartida.putExtras(datos);
                 startActivity(intentCrearPartida);
                 break;

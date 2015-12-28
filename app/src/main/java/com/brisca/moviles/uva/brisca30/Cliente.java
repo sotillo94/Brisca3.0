@@ -52,7 +52,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         //Recogemos los datos que nos ha pasado la activity anterior
         Bundle datos= getIntent().getExtras();
         estadoPartida.setText(datos.getString("nombrePartida"));
-        boolean crear=datos.getBoolean("crear");
+
 
         //Ponemos como nombre del servicio el nombre que introdujo el usuario en la actividad anterior
         NsdHelper.mServiceName=NsdHelper.mServiceName+datos.getString("nombrePartida");
@@ -72,31 +72,26 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         //inicializamos la conexion
         mNsdHelper = new NsdHelper(this);
         //la conexion se inicia
-        mNsdHelper.initializeNsd();
+        //mNsdHelper.initializeNsd();
 
 
-        if(crear){
-            //Si es servidor debe crear un servicio, se le anade Serv al final para que no se intente conectar así mismo
-            NsdHelper.mServiceName=NsdHelper.mServiceName+"Serv";
-            crear();
-            estadoPartida.setText("Creado");
-        }
-        else {
-            //Se buscan servicios
-            descubrir();
-            sleep(1000);
-            //Se conecta
-            conectar();
-            estadoPartida.setText("Conectado");
-            sleep(1000);
-            //Se para de buscar servicios
-            mNsdHelper.stopDiscovery();
-            sleep(1000);
 
-            //Se envia un mensaje de OK
-            enviar("OKc");
 
-        }
+        //Se buscan servicios
+        descubrir();
+        sleep(1000);
+        //Se conecta
+        conectar();
+        estadoPartida.setText("Conectado");
+        sleep(1000);
+        //Se para de buscar servicios
+        mNsdHelper.stopDiscovery();
+        sleep(1000);
+
+        //Se envia un mensaje de OK
+        enviar("OKc");
+
+
 
     }
 
@@ -147,7 +142,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
             if (!messageString.isEmpty()) {
                 mConnection.sendMessage(messageString);
             }
-            enviar("Enviar vacio");
+
         }
     }
 

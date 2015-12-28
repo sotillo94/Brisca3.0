@@ -38,7 +38,6 @@ public class CrearNuevaPartida extends AppCompatActivity implements View.OnClick
                 Intent intentCrearPartida = new Intent(CrearNuevaPartida.this,Servidor.class);
                 datos=new Bundle();
                 datos.putString("nombrePartida",nombre);
-                datos.putBoolean("crear",true);
                 intentCrearPartida.putExtras(datos);
                 startActivity(intentCrearPartida);
                 break;
