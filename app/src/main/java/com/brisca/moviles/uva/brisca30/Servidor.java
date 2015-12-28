@@ -71,14 +71,14 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
         //inicializamos la conexion
         mNsdHelper = new NsdHelper(this);
         //la conexion se inicia
-        //mNsdHelper.initializeNsd();
+        mNsdHelper.initializeNsd();
 
 
 
-        //Si es servidor debe crear un servicio, se le anade Serv al final para que no se intente conectar así mismo
-        NsdHelper.mServiceName=NsdHelper.mServiceName+"Serv";
-        crear();
-        estadoPartida.setText("Creado");
+            //Si es servidor debe crear un servicio, se le anade Serv al final para que no se intente conectar así mismo
+            NsdHelper.mServiceName=NsdHelper.mServiceName+"Serv";
+            crear();
+            estadoPartida.setText("Creado");
 
 
     }

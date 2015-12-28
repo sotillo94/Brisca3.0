@@ -35,7 +35,7 @@ public class NsdHelper {
 
     public static final String SERVICE_TYPE = "_http._tcp.";
 
-    public static final String TAG = "NsdHelper";
+    public static final String TAG = "Cliente-NsdHelper";
     public static String mServiceName = "Brisca";
 
     NsdServiceInfo mService;

@@ -72,24 +72,23 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         //inicializamos la conexion
         mNsdHelper = new NsdHelper(this);
         //la conexion se inicia
-        //mNsdHelper.initializeNsd();
+        mNsdHelper.initializeNsd();
 
 
 
+            //Se buscan servicios
+            descubrir();
+            sleep(1000);
+            //Se conecta
+            conectar();
+            estadoPartida.setText("Conectado");
+            sleep(1000);
+            //Se para de buscar servicios
+            mNsdHelper.stopDiscovery();
+            sleep(1000);
 
-        //Se buscan servicios
-        descubrir();
-        sleep(1000);
-        //Se conecta
-        conectar();
-        estadoPartida.setText("Conectado");
-        sleep(1000);
-        //Se para de buscar servicios
-        mNsdHelper.stopDiscovery();
-        sleep(1000);
-
-        //Se envia un mensaje de OK
-        enviar("OKc");
+            //Se envia un mensaje de OK
+            enviar("OKc");
 
 
 
@@ -142,7 +141,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
             if (!messageString.isEmpty()) {
                 mConnection.sendMessage(messageString);
             }
-
+            enviar("Enviar vacio");
         }
     }
 

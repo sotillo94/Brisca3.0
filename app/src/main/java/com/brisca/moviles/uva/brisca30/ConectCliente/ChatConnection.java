@@ -44,7 +44,7 @@ public class ChatConnection {
     private ChatServer mChatServer;
     private ChatClient mChatClient;
 
-    private static final String TAG = "ChatConnection";
+    private static final String TAG = "Cliente-ChatConnection";
 
     private Socket mSocket;
     //Elegimos -1 para que sea el so el que decida el puerto
