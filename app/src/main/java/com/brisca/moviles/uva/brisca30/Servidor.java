@@ -11,10 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import static android.os.SystemClock.sleep;
 
-import com.brisca.moviles.uva.brisca30.ConectServidor.ChatConnection;
-import com.brisca.moviles.uva.brisca30.ConectServidor.NsdHelper;
+import com.brisca.moviles.uva.brisca30.Conect.ChatConnection;
+import com.brisca.moviles.uva.brisca30.Conect.MyParcelable;
+import com.brisca.moviles.uva.brisca30.Conect.NsdHelper;
 
 /**
  * Esta clase es la encargada de mostrar y controlar la interfaz del chat.
@@ -28,10 +28,12 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
     //Estado de la conexion
     NsdHelper mNsdHelper;
 
+    MyParcelable parcelable = new MyParcelable();
     //Chat
     private TextView mStatusView;
 
     Button botonEnviar;
+    Button botonParar;
     public String TAG = "NsdChat";
 
     //Estado del chat
@@ -45,8 +47,11 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
         //accedemos a los campos del layout
         mStatusView = (TextView) findViewById(R.id.status);
         estadoPartida=(TextView)findViewById(R.id.NombrePartida);
+
         botonEnviar=(Button) findViewById(R.id.send_btn);
         botonEnviar.setOnClickListener(this);//Le activamos el onClickListener
+        botonParar=(Button) findViewById(R.id.stop_btn);
+        botonParar.setOnClickListener(this);//Le activamos el onClickListener
 
         //Recogemos los datos que nos ha pasado la activity anterior
         Bundle datos= getIntent().getExtras();
@@ -73,7 +78,8 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
         //la conexion se inicia
         mNsdHelper.initializeNsd();
 
-
+        NsdHelper.TAG +="Servidor";
+        ChatConnection.TAG +="Servidor";
 
             //Si es servidor debe crear un servicio, se le anade Serv al final para que no se intente conectar así mismo
             NsdHelper.mServiceName=NsdHelper.mServiceName+"Serv";
@@ -150,30 +156,36 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
      * @param line mensaje que recibimos y sera mostrado
      */
     public void addChatLine(String line) {
+        if(line.equals("FIN")){
+            fin();
+        }
         mStatusView.append("\n" + line);
     }
 
     @Override
     protected void onPause() {
+        /*
         if (mNsdHelper != null) {
             mNsdHelper.tearDown();
         }
+        super.onPause();
+        */
+        //fin();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-        super.onResume();
+        super.onResume();/*
         if (mNsdHelper != null) {
             mNsdHelper.registerService(mConnection.getLocalPort());
             mNsdHelper.discoverServices();
-        }
+        }*/
     }
 
     @Override
     protected void onDestroy() {
-        mNsdHelper.tearDown();
-        mConnection.tearDown();
+        //fin();
         super.onDestroy();
     }
 
@@ -187,10 +199,45 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
                 //si pulsamos el boton enviar se llama a enviar()
                 enviar();
                 break;
+            case R.id.stop_btn:
+                //si pulsamos el boton enviar se llama a enviar()
+                enviar("FIN");
+                fin();
+                break;
             default:
                 break;
         }
 
     }
+    public void fin(){
+        mNsdHelper.tearDown();
+        mConnection.tearDown();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence("TEXT", mStatusView.getText());
+        outState.putCharSequence("ESTADO", estadoPartida.getText());
+        parcelable.setmConnection(mConnection);
+        parcelable.setmNsdHelper(mNsdHelper);
+        outState.putParcelable("Parce",parcelable);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        mStatusView = (TextView) findViewById(R.id.status);
+        mStatusView.setText(String.valueOf(savedInstanceState.getCharSequence("TEXT")));
+        estadoPartida.setText(String.valueOf(savedInstanceState.getCharSequence("ESTADO")));
+        parcelable=savedInstanceState.getParcelable("Parce");
+        mConnection=parcelable.getmConnection();
+        mNsdHelper=parcelable.getmNsdHelper();
+    }
 
 }
+/*
+//Estado de la conexion
+NsdHelper mNsdHelper;
+ChatConnection mConnection;
+*/

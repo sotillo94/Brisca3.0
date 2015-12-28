@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.brisca.moviles.uva.brisca30.ConectServidor;
+package com.brisca.moviles.uva.brisca30.Conect;
 
 import android.content.Context;
 import android.net.nsd.NsdManager;
@@ -35,7 +35,7 @@ public class NsdHelper {
 
     public static final String SERVICE_TYPE = "_http._tcp.";
 
-    public static final String TAG = "Servidor-NsdHelper";
+    public static  String TAG = "NsdHelper";
     public static String mServiceName = "Brisca";
 
     NsdServiceInfo mService;

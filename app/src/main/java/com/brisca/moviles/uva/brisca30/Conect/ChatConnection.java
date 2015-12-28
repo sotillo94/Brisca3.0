@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.brisca.moviles.uva.brisca30.ConectCliente;
+package com.brisca.moviles.uva.brisca30.Conect;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,7 +44,7 @@ public class ChatConnection {
     private ChatServer mChatServer;
     private ChatClient mChatClient;
 
-    private static final String TAG = "Cliente-ChatConnection";
+    public static  String TAG = "ChatConnection";
 
     private Socket mSocket;
     //Elegimos -1 para que sea el so el que decida el puerto

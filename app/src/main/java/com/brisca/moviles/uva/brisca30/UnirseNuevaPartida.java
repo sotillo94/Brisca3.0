@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.brisca.moviles.uva.brisca30.ConectCliente.ChatConnection;
-import com.brisca.moviles.uva.brisca30.ConectCliente.NsdHelper;
+import com.brisca.moviles.uva.brisca30.Conect.ChatConnection;
+import com.brisca.moviles.uva.brisca30.Conect.NsdHelper;
 
 import static android.os.SystemClock.sleep;
 

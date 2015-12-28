@@ -12,8 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.brisca.moviles.uva.brisca30.ConectCliente.ChatConnection;
-import com.brisca.moviles.uva.brisca30.ConectCliente.NsdHelper;
+import com.brisca.moviles.uva.brisca30.Conect.ChatConnection;
+import com.brisca.moviles.uva.brisca30.Conect.MyParcelable;
+import com.brisca.moviles.uva.brisca30.Conect.NsdHelper;
 
 import static android.os.SystemClock.sleep;
 
@@ -25,10 +26,10 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
 
     //Utilizado para mostrar el estado de la conexion
     TextView estadoPartida;
-
-    //Estado de la conexion
+        //Estado de la conexion
     NsdHelper mNsdHelper;
 
+    MyParcelable parcelable = new MyParcelable();
     //Chat
     private TextView mStatusView;
 
@@ -73,12 +74,13 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         mNsdHelper = new NsdHelper(this);
         //la conexion se inicia
         mNsdHelper.initializeNsd();
-
+        NsdHelper.TAG +="Cliente";
+        ChatConnection.TAG +="Cliente";
 
 
             //Se buscan servicios
             descubrir();
-            sleep(1000);
+            sleep(10000);
             //Se conecta
             conectar();
             estadoPartida.setText("Conectado");
@@ -161,30 +163,37 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
      * @param line mensaje que recibimos y sera mostrado
      */
     public void addChatLine(String line) {
+        if(line.equals("FIN")){
+            fin();
+        }
         mStatusView.append("\n" + line);
     }
 
     @Override
     protected void onPause() {
+        /*
         if (mNsdHelper != null) {
             mNsdHelper.tearDown();
         }
+        super.onPause();
+        */
+       // fin();
         super.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        /*
         if (mNsdHelper != null) {
             mNsdHelper.registerService(mConnection.getLocalPort());
             mNsdHelper.discoverServices();
-        }
+        }*/
     }
 
     @Override
     protected void onDestroy() {
-        mNsdHelper.tearDown();
-        mConnection.tearDown();
+        //fin();
         super.onDestroy();
     }
 
@@ -203,5 +212,29 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
         }
 
     }
+    public void fin(){
+        mNsdHelper.tearDown();
+        mConnection.tearDown();
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence("TEXT", mStatusView.getText());
+        outState.putCharSequence("ESTADO", estadoPartida.getText());
+        parcelable.setmConnection(mConnection);
+        parcelable.setmNsdHelper(mNsdHelper);
+        outState.putParcelable("Parce",parcelable);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        mStatusView = (TextView) findViewById(R.id.status);
+        mStatusView.setText(String.valueOf(savedInstanceState.getCharSequence("TEXT")));
+        estadoPartida.setText(String.valueOf(savedInstanceState.getCharSequence("ESTADO")));
+        parcelable=savedInstanceState.getParcelable("Parce");
+        mConnection=parcelable.getmConnection();
+        mNsdHelper=parcelable.getmNsdHelper();
+    }
 }
