@@ -71,6 +71,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
             }
         };
 
+
         //inicializamos el chat
         mConnection = new ChatConnection(mUpdateHandler);
         //inicializamos la conexion
