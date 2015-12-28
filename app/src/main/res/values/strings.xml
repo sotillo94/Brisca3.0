@@ -89,7 +89,7 @@
 
     <!--Crear nueva partida-->
     <string name="title_activity_crear_nueva_partida">Crear nueva partida</string>
-    <string name="mens_nombre_partida">Escribe el nombre de la artida</string>
+    <string name="mens_nombre_partida">Escribe el nombre de la partida</string>
     <string name="boton_crear">Crear</string>
 
     <!-- Unirse a nueva partida-->
@@ -99,6 +99,7 @@
 
     <!--Conectar-->
     <string name="conect_enviar">Enviar</string>
+    <string name="conect_parar">Parar servidor</string>
 
     <!--Partida-->
     <string name="partida_titulo">Partida</string>

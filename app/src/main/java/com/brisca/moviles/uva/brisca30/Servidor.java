@@ -130,7 +130,6 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
             if (!messageString.isEmpty()) {
                 mConnection.sendMessage(messageString);
             }
-            enviar("Enviar vacio");
         }
     }
 

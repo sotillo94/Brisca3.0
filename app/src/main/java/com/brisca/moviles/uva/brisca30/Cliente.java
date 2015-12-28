@@ -141,7 +141,6 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
             if (!messageString.isEmpty()) {
                 mConnection.sendMessage(messageString);
             }
-            enviar("Enviar vacio");
         }
     }
 
