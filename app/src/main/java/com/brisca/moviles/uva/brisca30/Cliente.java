@@ -52,7 +52,6 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
 
         //Recogemos los datos que nos ha pasado la activity anterior
         Bundle datos= getIntent().getExtras();
-        estadoPartida.setText(datos.getString("nombrePartida"));
 
 
         //Ponemos como nombre del servicio el nombre que introdujo el usuario en la actividad anterior
@@ -64,7 +63,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void handleMessage(Message msg) {
                 String chatLine = msg.getData().getString("msg");
-                addChatLine(chatLine);
+                recibir(chatLine);
             }
         };
 
@@ -80,10 +79,10 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
 
             //Se buscan servicios
             descubrir();
-            sleep(10000);
+            sleep(2000);
             //Se conecta
             conectar();
-            estadoPartida.setText("Conectado");
+            estadoPartida.setText("mIP:");
             sleep(1000);
             //Se para de buscar servicios
             mNsdHelper.stopDiscovery();
@@ -138,6 +137,9 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
      */
     public void enviar() {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
+
+        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
+        estadoPartida.setText("mIP: "+ChatConnection.MyIP);
         if (messageView != null) {
             String messageString = messageView.getText().toString();
             if (!messageString.isEmpty()) {
@@ -152,6 +154,8 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
      */
     public void enviar(String x) {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
+        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
+        estadoPartida.setText("mIP: "+ChatConnection.MyIP);
         if (messageView != null) {
             mConnection.sendMessage(x);
             messageView.setText("");
@@ -162,7 +166,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
      * Es el encargado de mostrar en el chat el mensaje recibido
      * @param line mensaje que recibimos y sera mostrado
      */
-    public void addChatLine(String line) {
+    public void recibir(String line) {
         if(line.equals("FIN")){
             fin();
         }

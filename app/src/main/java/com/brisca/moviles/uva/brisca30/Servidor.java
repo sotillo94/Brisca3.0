@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import com.brisca.moviles.uva.brisca30.Conect.ChatConnection;
 import com.brisca.moviles.uva.brisca30.Conect.MyParcelable;
 import com.brisca.moviles.uva.brisca30.Conect.NsdHelper;
+
+import java.net.InetAddress;
 
 /**
  * Esta clase es la encargada de mostrar y controlar la interfaz del chat.
@@ -40,6 +43,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
     ChatConnection mConnection;
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +60,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
         //Recogemos los datos que nos ha pasado la activity anterior
         Bundle datos= getIntent().getExtras();
 
-        estadoPartida.setText(datos.getString("nombrePartida"));
+
 
 
         //Ponemos como nombre del servicio el nombre que introdujo el usuario en la actividad anterior
@@ -68,7 +72,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void handleMessage(Message msg) {
                 String chatLine = msg.getData().getString("msg");
-                addChatLine(chatLine);
+                recibir(chatLine);
             }
         };
 
@@ -86,7 +90,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
             //Si es servidor debe crear un servicio, se le anade Serv al final para que no se intente conectar así mismo
             NsdHelper.mServiceName=NsdHelper.mServiceName+"Serv";
             crear();
-            estadoPartida.setText("Creado");
+            estadoPartida.setText("mIP: ");
 
 
     }
@@ -133,6 +137,10 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
      */
     public void enviar() {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
+
+        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
+        estadoPartida.setText("mIP: "+ChatConnection.MyIP);
+
         if (messageView != null) {
             String messageString = messageView.getText().toString();
             if (!messageString.isEmpty()) {
@@ -157,9 +165,12 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
      * Es el encargado de mostrar en el chat el mensaje recibido
      * @param line mensaje que recibimos y sera mostrado
      */
-    public void addChatLine(String line) {
-        if(line.equals("FIN")){
+    public void recibir(String line) {
+        String[] t = TextUtils.split(line, "-");
+        if(t[1].equals("FIN")){
+            enviar("Ola bebe");
             fin();
+
         }
         mStatusView.append("\n" + line);
     }

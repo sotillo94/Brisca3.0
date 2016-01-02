@@ -43,7 +43,7 @@ public class ChatConnection {
     private Handler mUpdateHandler;
     private ChatServer mChatServer;
     private ChatClient mChatClient;
-
+    public static String MyIP;
     public static  String TAG = "ChatConnection";
 
     private Socket mSocket;
@@ -107,16 +107,15 @@ public class ChatConnection {
      * Envia mensajes
      * @param msg mensaje a enviar
      * @param local decide si el mensaje es local o externo
-     * @param mAddress IP que se enviara
+     * @param mAddress mi direccion IP
      */
     public synchronized void updateMessages(String msg, boolean local, InetAddress mAddress) {
         Log.e(TAG, "Updating message: " + msg);
-        String IP=mAddress.toString();
-
+        MyIP=mAddress.toString();
         if (local) {
-            msg = "me: "+IP+"-" + msg;
+            msg = "me: "+ msg;
         } else {
-            msg = "them: "+IP+"-" + msg;
+            msg = "them: "+ msg;
         }
 
         Bundle messageBundle = new Bundle();
