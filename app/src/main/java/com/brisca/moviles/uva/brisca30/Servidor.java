@@ -55,6 +55,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
 
         //Recogemos los datos que nos ha pasado la activity anterior
         Bundle datos= getIntent().getExtras();
+
         estadoPartida.setText(datos.getString("nombrePartida"));
 
 
