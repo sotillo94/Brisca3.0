@@ -113,9 +113,9 @@ public class ChatConnection {
         Log.e(TAG, "Updating message: " + msg);
         MyIP=mAddress.toString();
         if (local) {
-            msg = "me: "+ msg;
+            msg = "me:"+ msg;
         } else {
-            msg = "them: "+ msg;
+            msg = "them:"+ msg;
         }
 
         Bundle messageBundle = new Bundle();

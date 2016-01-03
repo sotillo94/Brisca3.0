@@ -138,8 +138,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
     public void enviar() {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
 
-        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
-        estadoPartida.setText("mIP: "+ChatConnection.MyIP);
+        actualizarIP();
 
         if (messageView != null) {
             String messageString = messageView.getText().toString();
@@ -149,12 +148,19 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
+
+
+    public void actualizarIP(){
+        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
+        estadoPartida.setText("mIP: " + ChatConnection.MyIP);
+    }
     /**
      * envia la cadena de texto introducida como parametro
      * @param x es el mensaje que se desea enviar
      */
     public void enviar(String x) {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
+       actualizarIP();
         if (messageView != null) {
             mConnection.sendMessage(x);
             messageView.setText("");
@@ -166,13 +172,20 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
      * @param line mensaje que recibimos y sera mostrado
      */
     public void recibir(String line) {
-        String[] t = TextUtils.split(line, "-");
-        if(t[1].equals("FIN")){
-            enviar("Ola bebe");
-            fin();
-
+        actualizarIP();
+        String[] t = TextUtils.split(line, ":");
+        if(t[0].equals("them")) {
+            if (t[1].equals("FIN")) {
+                mStatusView.append("\n" + line);
+                fin();
+            }
+            else{
+                mStatusView.append("\n" + line);
+            }
         }
-        mStatusView.append("\n" + line);
+        else{
+            mStatusView.append("\n" + line);
+        }
     }
 
     @Override
@@ -215,7 +228,6 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
             case R.id.stop_btn:
                 //si pulsamos el boton enviar se llama a enviar()
                 enviar("FIN");
-                fin();
                 break;
             default:
                 break;
@@ -226,6 +238,7 @@ public class Servidor extends AppCompatActivity implements View.OnClickListener 
         mNsdHelper.tearDown();
         mConnection.tearDown();
     }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState){

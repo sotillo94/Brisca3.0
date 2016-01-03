@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -137,7 +138,7 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
      */
     public void enviar() {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
-
+        actualizarIP();
         estadoPartida=(TextView)findViewById(R.id.NombrePartida);
         estadoPartida.setText("mIP: "+ChatConnection.MyIP);
         if (messageView != null) {
@@ -154,23 +155,37 @@ public class Cliente extends AppCompatActivity implements View.OnClickListener {
      */
     public void enviar(String x) {
         EditText messageView = (EditText) this.findViewById(R.id.chatInput);
-        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
-        estadoPartida.setText("mIP: "+ChatConnection.MyIP);
+        actualizarIP();
         if (messageView != null) {
             mConnection.sendMessage(x);
             messageView.setText("");
         }
     }
-
+    public void actualizarIP(){
+        estadoPartida=(TextView)findViewById(R.id.NombrePartida);
+        estadoPartida.setText("mIP: " + ChatConnection.MyIP);
+    }
     /**
      * Es el encargado de mostrar en el chat el mensaje recibido
      * @param line mensaje que recibimos y sera mostrado
      */
     public void recibir(String line) {
-        if(line.equals("FIN")){
-            fin();
+        actualizarIP();
+        String[] t = TextUtils.split(line, ":");
+        if(t[0].equals("them")) {
+            if (t[1].equals("FIN")) {
+                mStatusView.append("\n" + line);
+                enviar("FIN");
+                onDestroy();
+                fin();
+            }
+            else{
+                mStatusView.append("\n" + line);
+            }
         }
-        mStatusView.append("\n" + line);
+        else{
+            mStatusView.append("\n" + line);
+        }
     }
 
     @Override
