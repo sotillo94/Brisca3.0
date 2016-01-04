@@ -15,6 +15,8 @@ public class Interfaz extends AppCompatActivity  {
     protected ImageView carta1,carta2,carta3,cartaFin;
     private int modificarX=20;
     private int modificarY=20;
+    private int margenX=300;
+    private int margenY=500;
     private PointF ini1,ini2,ini3,fin;
 
     @Override
@@ -55,7 +57,7 @@ public class Interfaz extends AppCompatActivity  {
                 case MotionEvent.ACTION_UP:
                     Log.d("Fin: ",""+cartaFin.getX()+" Y: "+cartaFin.getY());
                     Log.d("Posicion Actual: ",""+v.getX()+" Y: "+v.getY());
-                    if(v.getX()>cartaFin.getX()&&v.getX()<cartaFin.getX()+100&&v.getY()<cartaFin.getY()&&v.getY()>cartaFin.getY()-200){
+                    if(v.getX()>cartaFin.getX()&&v.getX()<cartaFin.getX()+margenX&&v.getY()<cartaFin.getY()&&v.getY()>cartaFin.getY()-margenY){
                         v.setX(cartaFin.getX());
                         v.setY(cartaFin.getY());
                     } else {
@@ -88,7 +90,7 @@ public class Interfaz extends AppCompatActivity  {
                     DownPT.y = event.getY();
                     break;
                 case MotionEvent.ACTION_UP:
-                    if(v.getX()>cartaFin.getX()&&v.getX()<cartaFin.getX()+100&&v.getY()<cartaFin.getY()&&v.getY()>cartaFin.getY()-200){
+                    if(v.getX()>cartaFin.getX()&&v.getX()<cartaFin.getX()+margenX&&v.getY()<cartaFin.getY()&&v.getY()>cartaFin.getY()-margenY){
                         v.setX(cartaFin.getX());
                         v.setY(cartaFin.getY());
                     } else {
@@ -121,7 +123,7 @@ public class Interfaz extends AppCompatActivity  {
                     DownPT.y = event.getY();
                     break;
                 case MotionEvent.ACTION_UP:
-                    if(v.getX()>cartaFin.getX()&&v.getX()<cartaFin.getX()+100&&v.getY()<cartaFin.getY()&&v.getY()>cartaFin.getY()-200){
+                    if(v.getX()>cartaFin.getX()&&v.getX()<cartaFin.getX()+margenX&&v.getY()<cartaFin.getY()&&v.getY()>cartaFin.getY()-margenY){
                         v.setX(cartaFin.getX());
                         v.setY(cartaFin.getY());
                     } else {
