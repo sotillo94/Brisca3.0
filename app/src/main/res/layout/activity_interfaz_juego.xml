@@ -6,7 +6,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/background">
+        android:background="@drawable/background"
+        android:weightSum="1">
 
         <LinearLayout
             android:orientation="vertical"
@@ -22,110 +23,88 @@
                 android:id="@+id/nomJuador1" />
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
+            android:layout_height="match_parent">
 
-            >
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/c1j1"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/partida_carta1j1"
-                android:background="@drawable/v0"
-
-                />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/c2j1"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/partida_carta2j1"
-                android:background="@drawable/v0"
-                />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/c3j1"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@string/partida_carta3j1"
-                android:background="@drawable/v0"
-
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            >
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                >
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/c4j1"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/partida_espacio1"
-                    android:background="@drawable/v1"/>
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/c4j2"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/partida_espacio2"
-                    android:background="@drawable/v1"/>
-
-            </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
+
                 >
-                <ImageButton
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/pinta"
-                    android:rotation="90"
-
+                    android:id="@+id/c1j1"
                     android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/partida_pinta"
-                    android:background="@drawable/b6"/>
-                <ImageButton
+                    android:contentDescription="@string/partida_carta1j1"
+                    android:background="@drawable/v0"
+
+                    />
+
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/mazo"
+                    android:id="@+id/c2j1"
                     android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/partida_mazo"
-                    android:background="@drawable/v0"/>
+                    android:contentDescription="@string/partida_carta2j1"
+                    android:background="@drawable/v0"
+                    />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/c3j1"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@string/partida_carta3j1"
+                    android:background="@drawable/v0"
+
+                    />
             </LinearLayout>
+        </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            >
+            android:layout_height="match_parent"
+            android:layout_weight="0.88">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/c4j1"
+                android:contentDescription="@string/partida_espacio1"
+                android:background="@drawable/v1"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/pinta"
+                android:layout_toStartOf="@+id/pinta" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pinta"
+                android:rotation="90"
+
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/partida_pinta"
+                android:background="@drawable/b6"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/c1j2"
+                android:layout_toEndOf="@+id/c1j2" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mazo"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/partida_mazo"
+                android:background="@drawable/v0"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/c3j2"
+                android:layout_alignStart="@+id/c3j2" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -133,15 +112,20 @@
                 android:id="@+id/c1j2"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/partida_carta1j2"
-                android:background="@drawable/b1"/>
+                android:background="@drawable/b1"
+                android:layout_below="@+id/c4j1"
+                android:layout_toLeftOf="@+id/c2j2"
+                android:layout_toStartOf="@+id/c2j2" />
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/c2j2"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/partida_carta2j2"
-                android:background="@drawable/o1"/>
+                android:background="@drawable/o1"
+                android:layout_alignTop="@+id/c3j2"
+                android:layout_centerHorizontal="true" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -149,8 +133,12 @@
                 android:id="@+id/c3j2"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/partida_carta3j2"
-                android:background="@drawable/o12"/>
-        </LinearLayout>
+                android:background="@drawable/o12"
+                android:layout_below="@+id/c4j1"
+                android:layout_toRightOf="@+id/c2j2"
+                android:layout_toEndOf="@+id/c2j2" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:orientation="vertical"
@@ -170,5 +158,6 @@
                 android:text="@string/partida_mensajes"
                 android:id="@+id/MensajesJuego" />
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
